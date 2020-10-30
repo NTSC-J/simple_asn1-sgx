@@ -8,10 +8,16 @@ keywords = ["ASN1","encoding","DER"]
 license = "ISC"
 repository = "https://github.com/acw/simple_asn1"
 
+[features]
+default = ["std", "mesalock_sgx"]
+std = ["mesalock_sgx"]
+mesalock_sgx = ["sgx_tstd"]
+
 [dependencies]
-chrono     = "^0.4.0"
-num-bigint = "^0.2.0"
-num-traits = "^0.2.0"
+sgx_tstd = { rev = "v1.1.2", git = "https://github.com/apache/teaclave-sgx-sdk.git", optional = true }
+chrono     = { git = "https://github.com/mesalock-linux/chrono-sgx.git" }
+num-bigint = { git = "https://github.com/mesalock-linux/num-bigint-sgx.git" }
+num-traits = { git = "https://github.com/mesalock-linux/num-traits-sgx.git" }
 
 [dev-dependencies]
 quickcheck = "^0.7.1"
